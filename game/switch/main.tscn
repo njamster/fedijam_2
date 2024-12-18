@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://2exujqvrvhrq"]
+
+[ext_resource type="PackedScene" uid="uid://dudxm46m1jka2" path="res://game/turn_trigger/main.tscn" id="1_div37"]
+[ext_resource type="Script" path="res://game/switch/main.gd" id="1_hdwk8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rn65k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wllvg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhref"]
+bg_color = Color(0.6, 0.6, 0.6, 0.392157)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n25qb"]
+bg_color = Color(0.80505, 0.527055, 0.30784, 0.392157)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3ktp"]
+
+[node name="Switch" type="Node2D"]
+script = ExtResource("1_hdwk8")
+
+[node name="ClickableArea" type="Button" parent="."]
+custom_minimum_size = Vector2(48, 48)
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rn65k")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wllvg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_hhref")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hhref")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n25qb")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d3ktp")
+
+[node name="TurnTrigger" parent="." instance=ExtResource("1_div37")]
+
+[connection signal="pressed" from="ClickableArea" to="." method="_on_clickable_area_pressed"]
